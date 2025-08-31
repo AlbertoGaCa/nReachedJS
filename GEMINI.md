@@ -46,6 +46,10 @@ This is a tentative plan that we can adjust as we go.
     *   Add a score display.
     *   Add a game over screen with a restart option.
     *   Incorporate sound effects and visual polish.
+6.  **[COMPLETED] Gold Economy Implementation:**
+    *   Implement a gold counter UI.
+    *   Implement special gold bricks that spawn coins.
+    *   Implement coin items that increment the gold counter on collection.
 
 ## Bug Fixing and Polishing
 

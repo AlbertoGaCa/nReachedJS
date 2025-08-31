@@ -2,6 +2,7 @@ import { EventBus } from '../EventBus';
 import { Scene } from 'phaser';
 import { Ball } from '../Ball';
 import { Brick } from '../Brick';
+import { Coin } from '../Coin';
 
 export class Game extends Scene
 {
@@ -19,11 +20,16 @@ export class Game extends Scene
 
         this.add.image(512, 384, 'background').setAlpha(0.5);
 
-        this.scoreText = this.add.text(16, 16, 'Turn: 1', { fontSize: '32px', fill: '#fff' });
+                this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+        this.score = 0;
+
+        this.goldText = this.add.text(16, 50, 'Gold: 0', { fontSize: '32px', fill: '#FFD700' });
+        this.gold = 0;
 
         this.ball = new Ball(this, 512, 700, 10);
 
         this.bricks = this.physics.add.staticGroup();
+        this.coins = this.physics.add.group();
 
         this.spawnBricks();
 
@@ -32,6 +38,12 @@ export class Game extends Scene
         this.physics.add.collider(this.ball, this.bricks, (ball, brick) => {
             brick.hit();
         });
+
+        this.physics.add.overlap(this.ball, this.coins, this.collectCoin, null, this);
+
+        EventBus.on('coin-spawned', (coin) => {
+            this.coins.add(coin);
+        }, this);
 
         this.input.on('pointermove', (pointer) => {
             if (!this.isBallMoving)
@@ -70,7 +82,8 @@ export class Game extends Scene
     spawnBricks()
     {
         for (let i = 0; i < 7; i++) {
-            this.bricks.add(new Brick(this, 100 + i * 120, 100, 100, 50, this.turn));
+            const isGold = Math.random() < 0.2; // 20% chance to be a gold brick
+            this.bricks.add(new Brick(this, 100 + i * 120, 100, 100, 50, this.turn, isGold));
         }
     }
 
@@ -81,6 +94,16 @@ export class Game extends Scene
             brick.text.y += 60;
             brick.refreshBody();
         });
+
+        this.coins.getChildren().forEach(coin => {
+            coin.y += 60;
+        });
+    }
+
+    collectCoin(ball, coin) {
+        coin.collect();
+        this.gold++;
+        this.goldText.setText('Gold: ' + this.gold);
     }
 
     update()
