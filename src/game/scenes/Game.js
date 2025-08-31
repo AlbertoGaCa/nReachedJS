@@ -26,16 +26,40 @@ export class Game extends Scene
 
         this.spawnBricks();
 
+        this.trajectoryLine = this.add.graphics({ lineStyle: { width: 2, color: 0xffffff, alpha: 0.5 } });
+
         this.physics.add.collider(this.ball, this.bricks, (ball, brick) => {
             brick.hit();
+        });
+
+        this.input.on('pointermove', (pointer) => {
+            if (!this.isBallMoving)
+            {
+                this.trajectoryLine.clear();
+                const angle = Phaser.Math.Angle.Between(this.ball.x, this.ball.y, pointer.x, pointer.y);
+                const invertedAngle = Phaser.Math.Angle.Reverse(angle);
+
+                if (pointer.y > this.ball.y)
+                {
+                    const line = new Phaser.Geom.Line(this.ball.x, this.ball.y, this.ball.x + Math.cos(invertedAngle) * 1000, this.ball.y + Math.sin(invertedAngle) * 1000);
+                    const points = line.getPoints(0, 10);
+                    for (let i = 0; i < points.length; i += 2) {
+                        if (i + 1 < points.length) {
+                            this.trajectoryLine.strokeLineShape(new Phaser.Geom.Line(points[i].x, points[i].y, points[i+1].x, points[i+1].y));
+                        }
+                    }
+                }
+            }
         });
 
         this.input.on('pointerdown', (pointer) => {
             if (!this.isBallMoving)
             {
                 const angle = Phaser.Math.Angle.Between(this.ball.x, this.ball.y, pointer.x, pointer.y);
-                this.ball.body.setVelocity(Math.cos(angle) * 600, Math.sin(angle) * 600);
+                const invertedAngle = Phaser.Math.Angle.Reverse(angle);
+                this.ball.body.setVelocity(Math.cos(invertedAngle) * 600, Math.sin(invertedAngle) * 600);
                 this.isBallMoving = true;
+                this.trajectoryLine.clear();
             }
         });
 
