@@ -8,12 +8,13 @@ export class Game extends Scene
     constructor ()
     {
         super('Game');
-        this.turn = 1;
-        this.isBallMoving = false;
     }
 
     create ()
     {
+        this.turn = 1;
+        this.isBallMoving = false;
+
         this.cameras.main.setBackgroundColor(0x222222);
 
         this.add.image(512, 384, 'background').setAlpha(0.5);
@@ -53,7 +54,7 @@ export class Game extends Scene
         });
 
         this.input.on('pointerdown', (pointer) => {
-            if (!this.isBallMoving)
+            if (!this.isBallMoving && pointer.y > this.ball.y)
             {
                 const angle = Phaser.Math.Angle.Between(this.ball.x, this.ball.y, pointer.x, pointer.y);
                 const invertedAngle = Phaser.Math.Angle.Reverse(angle);
@@ -78,12 +79,13 @@ export class Game extends Scene
         this.bricks.getChildren().forEach(brick => {
             brick.y += 60;
             brick.text.y += 60;
+            brick.refreshBody();
         });
     }
 
     update()
     {
-        if (this.ball.body.y > 750 && this.isBallMoving)
+        if (this.isBallMoving && this.ball.body.y >= 700 && this.ball.body.velocity.y > 0)
         {
             const lastX = this.ball.body.x;
             this.ball.body.setVelocity(0, 0);

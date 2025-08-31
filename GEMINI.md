@@ -43,6 +43,11 @@ This is a tentative plan that we can adjust as we go.
     *   Add a game over screen with a restart option.
     *   Incorporate sound effects and visual polish.
 
+## Bug Fixing and Polishing
+
+*   Fixed several bugs related to physics, game state, and user input.
+*   Refined the trajectory line and ball shooting mechanics.
+
 ---
 
 I will keep this file updated as we make progress on the project.

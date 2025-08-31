@@ -13,6 +13,9 @@
 *   Added a score (turn) display.
 *   Added a dashed trajectory line for aiming with inverted and restricted controls.
 *   Fixed several bugs related to Phaser 3 physics configuration and game object creation.
+*   Fixed a bug where hitting upper bricks would damage lower bricks.
+*   Fixed a bug where the brick health would not reset on game restart.
+*   Fixed a bug where clicking above the ball would waste a turn.
 
 ## Files Modified
 
@@ -23,6 +26,7 @@
 *   `src/game/scenes/GameOver.js`
 *   `src/game/Ball.js`
 *   `src/game/Brick.js`
+*   `src/game/scenes/Preloader.js`
 
 ## Last Conversation Points
 
