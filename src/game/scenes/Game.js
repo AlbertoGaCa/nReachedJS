@@ -38,6 +38,7 @@ export class Game extends Scene
 
         // Score display
         this.score = 0;
+        this.ballDamage = 1; // Initialize ball damage
         this.scoreText = this.add.text(16, 16, 'Score: ' + this.score, { fontSize: '32px', fill: '#000' });
 
         // Turn display
@@ -46,6 +47,9 @@ export class Game extends Scene
         // Gold display
         this.goldText = this.add.text(16, 84, 'Gold: 0', { fontSize: '32px', fill: '#FFD700' });
         this.gold = 0;
+
+        // Ball Damage display
+        this.ballDamageText = this.add.text(16, 118, 'Damage: ' + this.ballDamage, { fontSize: '32px', fill: '#FFFFFF' });
 
         // Create the player's ball
         this.ball = new Ball(this, 512, 700, 10);
@@ -62,7 +66,7 @@ export class Game extends Scene
 
         // Set up collision between the ball and bricks
         this.physics.add.collider(this.ball, this.bricks, (ball, brick) => {
-            brick.hit(); // Call the hit method on the brick when collided
+            brick.hit(this.ballDamage); // Call the hit method on the brick when collided, passing ball damage
 
             // After a brick is hit, check if its row is completely destroyed
             if (brick.health <= 0) { // Check if the brick was actually destroyed
@@ -72,6 +76,8 @@ export class Game extends Scene
 
                 if (remainingBricksInRow.length === 0) {
                     console.log('DESTRUIDO');
+                    this.ballDamage++; // Increment ball damage
+                    this.ballDamageText.setText('Damage: ' + this.ballDamage); // Update ball damage display
                 }
             }
         });

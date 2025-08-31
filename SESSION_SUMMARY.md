@@ -22,11 +22,18 @@
     *   Increased initial ball launch speed.
     *   Implemented gradual ball speed increase over time.
 *   Implemented scoring system (August 31, 2025):
-    *   Added score value to bricks based on health.
+    *   Add score value to bricks based on health.
     *   Separated score and turn display in the UI.
 *   Implemented row destruction detection (August 31, 2025):
     *   Added `initialHealth` property to `src/game/Brick.js`.
     *   Modified `src/game/scenes/Game.js` to detect and log complete row destruction.
+*   Implemented ball damage increment (August 31, 2025):
+    *   Increased ball damage by 1 when a complete row of bricks is destroyed.
+*   Implemented ball damage UI display (August 31, 2025):
+    *   Added a UI element to display the current ball damage and ensured it updates dynamically.
+*   Implemented ball damage application to bricks (August 31, 2025):
+    *   Modified `src/game/scenes/Game.js` to pass ball damage to `Brick.hit()`.
+    *   Modified `src/game/Brick.js` to apply the received damage to brick health.
 
 ## Bug Fixing and Polishing
 

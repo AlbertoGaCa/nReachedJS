@@ -10,4 +10,6 @@
 -   IMPORTANTE: SIEMPRE AGREGAR LO QUE SE LOGRO EN GEMINI.MD Y SESSION_SUMMARY.MD (AQUI SI CON SU FECHA ACTUAL), DE LO QUE SE HIZO Y SE COMPLETÓ, HASTA QUE YO TE CONFIRME QUE ESTA FUNCIONANDO CORRECTAMENTE.
 
 -   **PASOS A EJECUTAR (Hacer uno por uno, no adelantarse y preguntarme si funciona cada paso, SOLO HACER EXPLICITAMENTE ESTOS PASOS AUNQUE MAS ARRIBA TE HAYA CONTADO UNA IDEA GENERAL)**
-    **1.- Agregar una propiedad o lo mejor que se ajuste para validar si ya se destruyó todo un row, de momento valida eso Y mandame un console log cuando destruya una fila o un row completo, es decir si destruyo todos los 1's que fueron los primeros bloques que se spawnearon me imprimiras en console log DESTRUIDO, y aplicaria para cualquier row**
+    **1.- [COMPLETED] Ahora veo que ya esta implementado el console.log, puedes ayudarme a que cada vez que se detecte el row eliminado, se aumente el daño de la pelota por 1**
+    **2.- [COMPLETED] Implementa el label para mostrar el daño de la pelota actualmente y que se vaya actualizando cada vez con la validacion del paso 1**
+    **3.- [COMPLETED] Ahora que ya se aumenta el daño de la pelota, necesito que ese daño se aplique a los bloques, es decir, si tengo 4 de daño y choco con un bloque de 5 de vida, el bloque se queda con 1 de vida, y si el bloque tiene 4 o menos, el bloque desaparece.**

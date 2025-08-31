@@ -49,9 +49,10 @@ export class Brick extends Physics.Arcade.Image {
     /**
      * Handles a hit on the brick, decreasing its health.
      * If health drops to 0 or below, the brick is destroyed.
+     * @param {number} damage - The amount of damage to apply to the brick.
      */
-    hit() {
-        this.health--; // Decrease health
+    hit(damage) {
+        this.health -= damage; // Decrease health by the given damage
         this.text.setText(this.health); // Update health display
         
         if (this.health <= 0) {
