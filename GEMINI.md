@@ -21,6 +21,10 @@ The primary goal is to create a functional and playable clone of the game BBTAN.
 *   `package.json`: Project dependencies and scripts.
 *   `GEMINI.md`: This file, serving as our shared memory and progress tracker.
 
+## Important Instructions
+
+*   The code must always be commented, so that in future sessions you understand the context of the code.
+
 ## Development Plan
 
 This is a tentative plan that we can adjust as we go.
