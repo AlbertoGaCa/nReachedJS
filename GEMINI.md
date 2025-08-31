@@ -50,6 +50,8 @@ This is a tentative plan that we can adjust as we go.
     *   Implement a gold counter UI.
     *   Implement special gold bricks that spawn coins.
     *   Implement coin items that increment the gold counter on collection.
+7.  **[COMPLETED] Brick Spawning Modification:**
+    *   Modify brick spawning to introduce gaps in rows based on probability.
 
 ## Bug Fixing and Polishing
 

@@ -1,13 +1,12 @@
-## En esta sesion vamos a implementar la economía del juego:
+## En esta sesion vamos a modificar la estructura:
 
--   Implementaremos bloques especiales de color dorado que al romperse aparecera una moneda, que va a ser un objeto donde al momento de que la pelota   pase por ahí no habra una colision, si no que es un item que sera transparente y subira una puntuación.
+-   Cambiar la estructura del spawneo de los bloques.
 
--   IMPORTANTE: IMPLEMENTAR PASO A PASO SIN ADELANTARSE, YO EVALUARÉ Y HARÉ TEST DE SI CONTINUAMOS, tambien tienes que leer todos los pasos para saber como implementarse al ir avanzando en los pasos pero sin adelantarte
+-   IMPORTANTE: IMPLEMENTAR PASO A PASO SIN ADELANTARSE, YO EVALUARÉ Y HARÉ TEST DE SI CONTINUAMOS, tambien tienes que leer todos los pasos para saber como implementarse entre todos los pasos al ir avanzando en los pasos pero sin adelantarte
+
+-   IMPORTANTE: NO ELIMINAR NI AFECTAR FUNCIONALIDADES PREVIAS SI NO TE LO PIDO YO, NO INVENTES NI ALUCINES COSAS QUE YO NO TE PEDÍ, no modifiques nada de lo existente.
 
 -   **PASOS A EJECUTAR**
--   **Implementar monto de economia, oro: numero de monedas recolectadas**
-    -   Un label con un contador que se muestre cuantas monedas tengo
--   **Bricks Dorados Especiales:**
-    -   Son del tipo "veta de mineral" (ore) de Minecraft.
-    -   Garantizan una moneda de oro al romperse.
-    -   El jugador los ve desde el inicio y debe decidir si arriesga tiros menos óptimos para conseguirlos o prioriza la supervivencia.
+-   **Modificar spawneo de bricks**
+    -   No quiero que las filas sean completas, es decir no me llenes todas la filas, que haya una probalidad de spawnear o no spawnear el bloque y tengamos como gaps debido a que actualmente es dificil pasar el juego.
+

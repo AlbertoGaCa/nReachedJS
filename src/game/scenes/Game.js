@@ -82,8 +82,11 @@ export class Game extends Scene
     spawnBricks()
     {
         for (let i = 0; i < 7; i++) {
-            const isGold = Math.random() < 0.2; // 20% chance to be a gold brick
-            this.bricks.add(new Brick(this, 100 + i * 120, 100, 100, 50, this.turn, isGold));
+            const shouldSpawn = Math.random() < 0.7; // 70% chance to spawn a brick
+            if (shouldSpawn) {
+                const isGold = Math.random() < 0.2; // 20% chance to be a gold brick
+                this.bricks.add(new Brick(this, 100 + i * 120, 100, 100, 50, this.turn, isGold));
+            }
         }
     }
 

@@ -12,10 +12,23 @@
 *   Implemented the game over condition.
 *   Added a score (turn) display.
 *   Added a dashed trajectory line for aiming with inverted and restricted controls.
+*   Implemented gold economy (August 31, 2025):
+    *   Added gold counter UI.
+    *   Implemented special gold bricks that spawn coins.
+    *   Implemented coin items that increment the gold counter on collection.
+*   Modified brick spawning (August 31, 2025):
+    *   Introduced probability for each brick to spawn, creating gaps in rows.
+
+## Bug Fixing and Polishing
+
 *   Fixed several bugs related to Phaser 3 physics configuration and game object creation.
 *   Fixed a bug where hitting upper bricks would damage lower bricks.
 *   Fixed a bug where the brick health would not reset on game restart.
 *   Fixed a bug where clicking above the ball would waste a turn.
+*   Fixed bug where coins were not moving with bricks and disappearing (August 31, 2025):
+    *   Removed `setImmovable(true)` from `Coin.js`.
+    *   Removed `refreshBody()` from `Game.js` for coins.
+    *   Implemented event-based coin spawning to ensure coins are added to the `this.coins` group in `Game.js`.
 
 ## Files Modified
 
@@ -26,6 +39,7 @@
 *   `src/game/scenes/GameOver.js`
 *   `src/game/Ball.js`
 *   `src/game/Brick.js`
+*   `src/game/Coin.js`
 *   `src/game/scenes/Preloader.js`
 
 ## Last Conversation Points
