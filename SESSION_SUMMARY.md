@@ -24,6 +24,9 @@
 *   Implemented scoring system (August 31, 2025):
     *   Added score value to bricks based on health.
     *   Separated score and turn display in the UI.
+*   Implemented row destruction detection (August 31, 2025):
+    *   Added `initialHealth` property to `src/game/Brick.js`.
+    *   Modified `src/game/scenes/Game.js` to detect and log complete row destruction.
 
 ## Bug Fixing and Polishing
 
@@ -47,6 +50,8 @@
 *   `src/game/Brick.js`
 *   `src/game/Coin.js`
 *   `src/game/scenes/Preloader.js`
+*   `src/game/Brick.js`
+*   `src/game/scenes/Game.js`
 
 ## Last Conversation Points
 

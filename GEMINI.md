@@ -74,6 +74,12 @@ This is a tentative plan that we can adjust as we go.
 *   Fixed several bugs related to physics, game state, and user input.
 *   Refined the trajectory line and ball shooting mechanics.
 
+## Ball Damage Implementation
+
+1.  **[COMPLETED] Row Destruction Detection:** Implemented logic to detect when a complete row of bricks is destroyed, logging "DESTRUIDO" to the console. This involved:
+    *   Adding an `initialHealth` property to `src/game/Brick.js` to store the original health value of a brick, which serves as its row identifier.
+    *   Modifying the collision handler in `src/game/scenes/Game.js` to check if all bricks with a specific `initialHealth` value are destroyed, and if so, logging the detection.
+
 ---
 
 I will keep this file updated as we make progress on the project.

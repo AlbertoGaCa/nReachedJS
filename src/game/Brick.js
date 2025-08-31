@@ -24,6 +24,7 @@ export class Brick extends Physics.Arcade.Image {
         super(scene, x, y, 'whitePixel'); // 'whitePixel' is a 1x1 white texture generated in Preloader
         this.setDisplaySize(width, height); // Set the display size of the brick
         this.isGold = isGold; // Store whether this is a gold brick
+        this.initialHealth = health; // Store the initial health of the brick to identify its row
 
         let color;
         if (this.isGold) {

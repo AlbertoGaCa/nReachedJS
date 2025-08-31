@@ -63,6 +63,17 @@ export class Game extends Scene
         // Set up collision between the ball and bricks
         this.physics.add.collider(this.ball, this.bricks, (ball, brick) => {
             brick.hit(); // Call the hit method on the brick when collided
+
+            // After a brick is hit, check if its row is completely destroyed
+            if (brick.health <= 0) { // Check if the brick was actually destroyed
+                const initialHealthOfDestroyedBrick = brick.initialHealth;
+                // Filter out the destroyed brick itself and check for others with the same initialHealth
+                const remainingBricksInRow = this.bricks.getChildren().filter(b => b.initialHealth === initialHealthOfDestroyedBrick && b.active);
+
+                if (remainingBricksInRow.length === 0) {
+                    console.log('DESTRUIDO');
+                }
+            }
         });
 
         // Set up overlap between the ball and coins
