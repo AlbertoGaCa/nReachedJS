@@ -21,6 +21,9 @@
 *   Modified ball speed (August 31, 2025):
     *   Increased initial ball launch speed.
     *   Implemented gradual ball speed increase over time.
+*   Implemented scoring system (August 31, 2025):
+    *   Added score value to bricks based on health.
+    *   Separated score and turn display in the UI.
 
 ## Bug Fixing and Polishing
 
