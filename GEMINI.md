@@ -13,17 +13,27 @@ The primary goal is to create a functional and playable clone of the game BBTAN.
 *   **Build Tool:** Vite
 *   **Language:** JavaScript
 
-## Key Files
-
-*   `src/game/scenes/`: Directory containing all Phaser game scenes.
-*   `src/game/main.js`: Main configuration file for the Phaser game.
-*   `src/App.vue`: The main Vue component, which hosts the Phaser game.
-*   `package.json`: Project dependencies and scripts.
-*   `GEMINI.md`: This file, serving as our shared memory and progress tracker.
-
 ## Important Instructions
 
 *   The code must always be commented, so that in future sessions you understand the context of the code.
+*   **Commenting Rule:** When creating a new file or modifying an existing one, add comments to the file to provide context and explanation for future sessions.
+*   **File Structure and Context Added:** Detailed explanations of the project's file structure and the context of each key file have been added to this document.
+
+## Project File Structure and Context
+
+This section outlines the key files and directories within the project, along with their purpose and context.
+
+*   `src/game/scenes/`: Directory containing all Phaser game scenes. Each file within this directory represents a distinct game state or screen (e.g., Boot, Preloader, Game, MainMenu, GameOver).
+*   `src/game/main.js`: The main configuration file for the Phaser game instance. It initializes the Phaser game, defines its dimensions, physics, and registers all the scenes.
+*   `src/App.vue`: The main Vue.js component that serves as the entry point for the frontend application. It hosts the Phaser game instance within its template.
+*   `src/PhaserGame.vue`: A Vue.js component responsible for embedding and managing the Phaser game instance within the Vue application. It handles the mounting and unmounting of the Phaser game.
+*   `src/game/Ball.js`: Defines the `Ball` class, which represents the player's ball in the game. It handles the ball's physics, movement, and interactions.
+*   `src/game/Brick.js`: Defines the `Brick` class, representing the destructible blocks in the game. It manages their health, appearance, and behavior upon collision.
+*   `src/game/Coin.js`: Defines the `Coin` class, representing the collectible gold coins spawned by special bricks. It handles their appearance and collection logic.
+*   `src/game/EventBus.js`: A simple event bus implementation used for communication between different parts of the Phaser game (e.g., between bricks and the game scene).
+*   `package.json`: Contains metadata about the project, including its dependencies and scripts for development and building.
+*   `GEMINI.md`: This file itself, serving as a shared memory and progress tracker for the development sessions with Gemini.
+*   `SESSION_SUMMARY.md`: A summary of achievements and bug fixes for each development session.
 
 ## Development Plan
 
