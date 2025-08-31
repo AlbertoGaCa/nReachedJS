@@ -18,6 +18,9 @@
     *   Implemented coin items that increment the gold counter on collection.
 *   Modified brick spawning (August 31, 2025):
     *   Introduced probability for each brick to spawn, creating gaps in rows.
+*   Modified ball speed (August 31, 2025):
+    *   Increased initial ball launch speed.
+    *   Implemented gradual ball speed increase over time.
 
 ## Bug Fixing and Polishing
 

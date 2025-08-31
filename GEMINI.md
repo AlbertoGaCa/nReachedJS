@@ -52,6 +52,9 @@ This is a tentative plan that we can adjust as we go.
     *   Implement coin items that increment the gold counter on collection.
 7.  **[COMPLETED] Brick Spawning Modification:**
     *   Modify brick spawning to introduce gaps in rows based on probability.
+8.  **[COMPLETED] Ball Speed Modification:**
+    *   Increase initial ball launch speed.
+    *   Implement gradual ball speed increase over time.
 
 ## Bug Fixing and Polishing
 

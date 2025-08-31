@@ -15,6 +15,9 @@ export class Game extends Scene
     {
         this.turn = 1;
         this.isBallMoving = false;
+        this.ballSpeed = 700; // Initial ball speed
+        this.maxBallSpeed = 1500; // Maximum ball speed
+        this.ballSpeedIncreaseRate = 5; // How much to increase speed per update
 
         this.cameras.main.setBackgroundColor(0x222222);
 
@@ -70,7 +73,7 @@ export class Game extends Scene
             {
                 const angle = Phaser.Math.Angle.Between(this.ball.x, this.ball.y, pointer.x, pointer.y);
                 const invertedAngle = Phaser.Math.Angle.Reverse(angle);
-                this.ball.body.setVelocity(Math.cos(invertedAngle) * 600, Math.sin(invertedAngle) * 600);
+                this.ball.body.setVelocity(Math.cos(invertedAngle) * this.ballSpeed, Math.sin(invertedAngle) * this.ballSpeed);
                 this.isBallMoving = true;
                 this.trajectoryLine.clear();
             }
@@ -111,6 +114,16 @@ export class Game extends Scene
 
     update()
     {
+        if (this.isBallMoving) {
+            // Gradually increase ball speed
+            const currentSpeed = this.ball.body.speed;
+            if (currentSpeed < this.maxBallSpeed) {
+                const newSpeed = Math.min(currentSpeed + this.ballSpeedIncreaseRate, this.maxBallSpeed);
+                this.ball.body.setVelocity(this.ball.body.velocity.x * (newSpeed / currentSpeed),
+                                           this.ball.body.velocity.y * (newSpeed / currentSpeed));
+            }
+        }
+
         if (this.isBallMoving && this.ball.body.y >= 700 && this.ball.body.velocity.y > 0)
         {
             const lastX = this.ball.body.x;
