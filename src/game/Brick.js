@@ -40,6 +40,7 @@ export class Brick extends Physics.Arcade.Image {
         scene.physics.add.existing(this, true); // `true` makes it a static body (immovable)
 
         this.health = health; // Set the brick's health
+        this.scoreValue = health; // Store initial health as score value
         // Add text to display the brick's health, centered on the brick
         this.text = scene.add.text(x, y, this.health, { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
     }
@@ -59,6 +60,7 @@ export class Brick extends Physics.Arcade.Image {
                 const coin = new Coin(this.scene, this.x, this.y);
                 EventBus.emit('coin-spawned', coin);
             }
+            EventBus.emit('brick-destroyed', this.scoreValue); // Emit event with score value
             this.text.destroy(); // Destroy the health text
             this.destroy(); // Destroy the brick object
         }

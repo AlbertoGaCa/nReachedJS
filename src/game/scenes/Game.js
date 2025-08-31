@@ -37,11 +37,14 @@ export class Game extends Scene
         this.add.image(512, 384, 'background').setAlpha(0.5);
 
         // Score display
-        this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
         this.score = 0;
+        this.scoreText = this.add.text(16, 16, 'Score: ' + this.score, { fontSize: '32px', fill: '#000' });
+
+        // Turn display
+        this.turnText = this.add.text(16, 50, 'Turn: ' + this.turn, { fontSize: '32px', fill: '#000' });
 
         // Gold display
-        this.goldText = this.add.text(16, 50, 'Gold: 0', { fontSize: '32px', fill: '#FFD700' });
+        this.goldText = this.add.text(16, 84, 'Gold: 0', { fontSize: '32px', fill: '#FFD700' });
         this.gold = 0;
 
         // Create the player's ball
@@ -68,6 +71,12 @@ export class Game extends Scene
         // Listen for the 'coin-spawned' event from Brick objects
         EventBus.on('coin-spawned', (coin) => {
             this.coins.add(coin); // Add the newly spawned coin to the coins group
+        }, this);
+
+        // Listen for the 'brick-destroyed' event from Brick objects
+        EventBus.on('brick-destroyed', (scoreValue) => {
+            this.score += scoreValue; // Add the brick's score value to the total score
+            this.scoreText.setText('Score: ' + this.score); // Update score display
         }, this);
 
         // Input handler for drawing the trajectory line on pointer movement
@@ -180,7 +189,7 @@ export class Game extends Scene
             this.ball.body.x = lastX;
             this.isBallMoving = false; // Set ball moving flag to false
             this.turn++; // Increment turn count
-            this.scoreText.setText('Turn: ' + this.turn); // Update turn display
+            this.turnText.setText('Turn: ' + this.turn); // Update turn display
             this.moveBricks(); // Move bricks down
             this.spawnBricks(); // Spawn new bricks
             this.checkGameOver(); // Check for game over condition

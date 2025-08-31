@@ -28,7 +28,7 @@ This section outlines the key files and directories within the project, along wi
 *   `src/App.vue`: The main Vue.js component that serves as the entry point for the frontend application. It hosts the Phaser game instance within its template.
 *   `src/PhaserGame.vue`: A Vue.js component responsible for embedding and managing the Phaser game instance within the Vue application. It handles the mounting and unmounting of the Phaser game.
 *   `src/game/Ball.js`: Defines the `Ball` class, which represents the player's ball in the game. It handles the ball's physics, movement, and interactions.
-*   `src/game/Brick.js`: Defines the `Brick` class, representing the destructible blocks in the game. It manages their health, appearance, and behavior upon collision.
+*   `src/game/Brick.js`: Defines the `Brick` class, representing the destructible blocks in the game. It manages their health, appearance (including special gold bricks), and behavior upon collision.
 *   `src/game/Coin.js`: Defines the `Coin` class, representing the collectible gold coins spawned by special bricks. It handles their appearance and collection logic.
 *   `src/game/EventBus.js`: A simple event bus implementation used for communication between different parts of the Phaser game (e.g., between bricks and the game scene).
 *   `package.json`: Contains metadata about the project, including its dependencies and scripts for development and building.
@@ -65,6 +65,9 @@ This is a tentative plan that we can adjust as we go.
 8.  **[COMPLETED] Ball Speed Modification:**
     *   Increase initial ball launch speed.
     *   Implement gradual ball speed increase over time.
+9.  **[COMPLETED] Scoring System Implementation:**
+    *   Add score value to bricks based on health.
+    *   Separate score and turn display in the UI.
 
 ## Bug Fixing and Polishing
 
