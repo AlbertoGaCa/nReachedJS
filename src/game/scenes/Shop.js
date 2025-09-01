@@ -27,9 +27,12 @@ export class Shop extends Scene
         }).setOrigin(0.5).setInteractive();
 
         continueButton.on('pointerdown', () => {
-            console.log('Continuing Game...');
-            this.scene.stop('Shop'); // Stop the Shop scene
-            this.scene.resume('Game'); // Resume the Game scene
+            this.scene.stop(this.scene.key); // Stop the current Shop scene
+            this.scene.wake('Game'); // Wake the Game scene
         });
+    }
+
+    update() {
+        console.log('Shop Scene: update()');
     }
 }

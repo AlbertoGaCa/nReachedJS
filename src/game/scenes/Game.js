@@ -23,6 +23,7 @@ export class Game extends Scene
      */
     create ()
     {
+        console.log('Game Scene: create()');
         // Game state variables
         this.turn = 1; // Current turn number
         this.isBallMoving = false; // Flag to track if the ball is currently in motion
@@ -160,6 +161,11 @@ export class Game extends Scene
 
         // Emit an event to indicate that the current scene is ready
         EventBus.emit('current-scene-ready', this);
+
+        this.events.on('wake', () => {
+            console.log('Game Scene: waking up');
+            // Potentially re-enable input or other elements here if needed
+        });
     }
 
     /**
@@ -241,8 +247,9 @@ export class Game extends Scene
             // Check if shop should be shown after turn ends
             if (this.showShopOnTurnEnd) {
                 this.showShopOnTurnEnd = false; // Reset the flag
-                this.scene.pause('Game');
-                this.scene.start('Shop');
+                
+                this.scene.sleep('Game'); // Sleep the Game scene
+                this.scene.launch('Shop'); // Launch the Shop scene on top
             }
         }
     }

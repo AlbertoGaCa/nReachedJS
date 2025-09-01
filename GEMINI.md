@@ -95,6 +95,7 @@ This is a tentative plan that we can adjust as we go.
 2.  **[COMPLETED] Shop Scene Bug Fixes:**
     *   Modified `src/game/scenes/Game.js` to pause the `Game` scene when transitioning to the `Shop` scene, and to delay the shop appearance until the current turn ends.
     *   Modified `src/game/scenes/Shop.js` to stop itself and resume the `Game` scene when the "Continue Game" button is clicked, ensuring the game state is preserved.
+3.  **[COMPLETED] Shop Scene Display Fix:** Changed scene transitions between `Game` and `Shop` to use `sleep()` and `wake()` instead of `pause()` and `resume()` to ensure correct display and playability after returning from the shop.
 
 ---
 
