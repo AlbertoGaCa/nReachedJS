@@ -89,6 +89,13 @@ This is a tentative plan that we can adjust as we go.
 
 1.  **[COMPLETED] Level and Wave Logic & UI:** Implemented the core logic for tracking game levels (Ante) and waves, including score-based progression. Added UI elements to display the current level and wave, and a console log for the shop entry point.
 
+## Shop Scene Implementation
+
+1.  **[COMPLETED] Basic Shop Scene:** Created a new `Shop` scene (`src/game/scenes/Shop.js`) with a background and a "Continue Game" button that transitions back to the `Game` scene. Registered the `Shop` scene in `src/game/main.js` and integrated the scene transition in `src/game/scenes/Game.js` when the score target is met.
+2.  **[COMPLETED] Shop Scene Bug Fixes:**
+    *   Modified `src/game/scenes/Game.js` to pause the `Game` scene when transitioning to the `Shop` scene, and to delay the shop appearance until the current turn ends.
+    *   Modified `src/game/scenes/Shop.js` to stop itself and resume the `Game` scene when the "Continue Game" button is clicked, ensuring the game state is preserved.
+
 ---
 
 I will keep this file updated as we make progress on the project.

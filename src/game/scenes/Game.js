@@ -29,6 +29,7 @@ export class Game extends Scene
         this.ballSpeed = 700; // Initial ball speed
         this.maxBallSpeed = 1500; // Maximum ball speed to prevent it from becoming too fast
         this.ballSpeedIncreaseRate = 5; // How much to increase speed per update cycle
+        this.showShopOnTurnEnd = false; // Flag to show shop after turn ends
 
         // Set the background color of the camera
         this.cameras.main.setBackgroundColor(0x222222);
@@ -111,7 +112,7 @@ export class Game extends Scene
 
             // Check for level progression
             if (this.score >= this.targetScore) {
-                console.log('AQUI SE MUESTRA LA TIENDA');
+                this.showShopOnTurnEnd = true;
                 this.currentWave++;
                 if (this.currentWave > 3) {
                     this.currentLevel++;
@@ -236,6 +237,13 @@ export class Game extends Scene
             this.moveBricks(); // Move bricks down
             this.spawnBricks(); // Spawn new bricks
             this.checkGameOver(); // Check for game over condition
+
+            // Check if shop should be shown after turn ends
+            if (this.showShopOnTurnEnd) {
+                this.showShopOnTurnEnd = false; // Reset the flag
+                this.scene.pause('Game');
+                this.scene.start('Shop');
+            }
         }
     }
 

@@ -10,6 +10,7 @@ import { GameOver } from './scenes/GameOver';
 import { MainMenu } from './scenes/MainMenu';
 import Phaser from 'phaser';
 import { Preloader } from './scenes/Preloader';
+import { Shop } from './scenes/Shop'; // Import the new Shop scene
 
 // Phaser game configuration
 // For more information, see: https://docs.phaser.io/api-documentation/typedef/types-core#gameconfig
@@ -31,7 +32,8 @@ const config = {
         Preloader, // Scene for preloading game assets
         MainMenu, // Main menu scene
         Game, // Main game scene where gameplay occurs
-        GameOver // Game over scene
+        GameOver, // Game over scene
+        Shop // Add the Shop scene here
     ]
 };
 
