@@ -39,7 +39,21 @@ export class Game extends Scene
         // Score display
         this.score = 0;
         this.ballDamage = 1; // Initialize ball damage
-        this.scoreText = this.add.text(16, 16, 'Score: ' + this.score, { fontSize: '32px', fill: '#000' });
+        this.scoreText = this.add.text(16, 16, 'Score: ' + this.score, { fontSize: '32px', fill: '#fff' });
+
+        // Level and Wave variables
+        this.currentLevel = 1;
+        this.currentWave = 1;
+        this.smallBlindScores = [50, 120, 220, 400, 700, 1200, 2000, 3500];
+        this.targetScore = 0; // Will be calculated in calculateTargetScore
+
+        // Level and Wave UI
+        this.levelText = this.add.text(16, 150, 'Level: 1', { fontSize: '24px', fill: '#fff' });
+        this.waveText = this.add.text(16, 180, 'Wave: 1', { fontSize: '24px', fill: '#fff' });
+
+        // Calculate initial target score
+        this.calculateTargetScore();
+        this.updateLevelUI();
 
         // Turn display
         this.turnText = this.add.text(16, 50, 'Turn: ' + this.turn, { fontSize: '32px', fill: '#000' });
@@ -94,6 +108,18 @@ export class Game extends Scene
         EventBus.on('brick-destroyed', (scoreValue) => {
             this.score += scoreValue; // Add the brick's score value to the total score
             this.scoreText.setText('Score: ' + this.score); // Update score display
+
+            // Check for level progression
+            if (this.score >= this.targetScore) {
+                console.log('AQUI SE MUESTRA LA TIENDA');
+                this.currentWave++;
+                if (this.currentWave > 3) {
+                    this.currentLevel++;
+                    this.currentWave = 1;
+                }
+                this.calculateTargetScore();
+                this.updateLevelUI();
+            }
         }, this);
 
         // Input handler for drawing the trajectory line on pointer movement
@@ -232,5 +258,44 @@ export class Game extends Scene
     changeScene ()
     {
         this.scene.start('GameOver');
+    }
+
+    /**
+     * Calculates the target score for the current level and wave.
+     */
+    calculateTargetScore() {
+        const anteIndex = this.currentLevel - 1;
+        if (anteIndex < 0 || anteIndex >= this.smallBlindScores.length) {
+            console.warn('Invalid Ante number:', this.currentLevel);
+            this.targetScore = Infinity; // Set a very high target to prevent progression
+            return;
+        }
+
+        let baseScore = this.smallBlindScores[anteIndex];
+        let blindType = '';
+
+        if (this.currentWave === 1) {
+            blindType = 'small_blind';
+            this.targetScore = baseScore;
+        } else if (this.currentWave === 2) {
+            blindType = 'big_blind';
+            this.targetScore = Math.round(baseScore * 1.5);
+        } else if (this.currentWave === 3) {
+            blindType = 'boss_blind';
+            this.targetScore = Math.round(baseScore * 2.0);
+        } else {
+            // This case should ideally not be reached if wave logic is correct
+            console.warn('Invalid Wave number:', this.currentWave);
+            this.targetScore = Infinity;
+        }
+        console.log(`Target for Level ${this.currentLevel}, Wave ${this.currentWave} (${blindType}): ${this.targetScore}`);
+    }
+
+    /**
+     * Updates the level and wave UI text.
+     */
+    updateLevelUI() {
+        this.levelText.setText(`Level: ${this.currentLevel}`);
+        this.waveText.setText(`Wave: ${this.currentWave}`);
     }
 }

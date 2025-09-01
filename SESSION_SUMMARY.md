@@ -34,6 +34,11 @@
 *   Implemented ball damage application to bricks (August 31, 2025):
     *   Modified `src/game/scenes/Game.js` to pass ball damage to `Brick.hit()`.
     *   Modified `src/game/Brick.js` to apply the received damage to brick health.
+*   Implemented Level and Wave Logic & UI (August 31, 2025):
+    *   Added `currentLevel`, `currentWave`, `smallBlindScores`, and `targetScore` variables to `Game.js`.
+    *   Added `levelText` and `waveText` UI elements to display current level and wave.
+    *   Implemented `calculateTargetScore()` to determine score needed for progression.
+    *   Integrated progression logic into `brick-destroyed` event listener, including console log for shop.
 
 ## Bug Fixing and Polishing
 

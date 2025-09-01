@@ -85,4 +85,10 @@ This is a tentative plan that we can adjust as we go.
 
 ---
 
+## Level and Wave Implementation
+
+1.  **[COMPLETED] Level and Wave Logic & UI:** Implemented the core logic for tracking game levels (Ante) and waves, including score-based progression. Added UI elements to display the current level and wave, and a console log for the shop entry point.
+
+---
+
 I will keep this file updated as we make progress on the project.
